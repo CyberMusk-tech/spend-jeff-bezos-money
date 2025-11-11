@@ -1,72 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Spend Jeff Bezos' Money</title>
   <style>
-    body {
-      background-color: #f4f4f4;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background: #222;
-      color: #fff;
-      padding: 20px;
-      font-size: 1.8em;
-    }
-    h2, h3 {
-      margin-top: 20px;
-    }
-    .money {
-      font-size: 2em;
-      margin: 20px 0;
-      color: green;
-    }
-    .category {
-      margin-bottom: 30px;
-    }
-    .category h3 {
-      background: #ddd;
-      padding: 10px;
-      border-radius: 8px;
-    }
-    .items {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-    }
-    .item {
-      background: #fff;
-      width: 180px;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      padding: 15px;
-    }
-    .item img {
-      width: 100%;
-      border-radius: 10px;
-    }
-    .item button {
-      margin-top: 10px;
-      padding: 10px;
-      border: none;
-      background: #007bff;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1em;
-    }
-    .item button:hover {
-      background: #0056b3;
-    }
-    .item p {
-      margin-top: 5px;
-    }
+    body { background-color: #f4f4f4; font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 0; }
+    header { background: #222; color: #fff; padding: 20px; font-size: 1.8em; }
+    h2, h3 { margin-top: 20px; }
+    .money { font-size: 2em; margin: 20px 0; color: green; }
+    .items { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+    .item { background: #fff; width: 180px; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); padding: 15px; }
+    .item img { width: 100%; border-radius: 10px; }
+    .item button { margin-top: 10px; padding: 10px; border: none; background: #007bff; color: white; border-radius: 8px; cursor: pointer; font-size: 1em; }
+    .item button:hover { background: #0056b3; }
+    .item p { margin-top: 5px; }
+    .category { margin-bottom: 30px; }
+    .category h3 { background: #ddd; padding: 10px; border-radius: 8px; }
   </style>
 </head>
 <body>
@@ -79,60 +29,60 @@
   <script>
     let money = 200000000000;
 
-    // Items grouped by category
+    // Items with better representative images
     const categories = [
       {
         name: "Food & Drinks",
         items: [
-          {name: "Soda", price: 5, img: "https://cdn-icons-png.flaticon.com/512/3129/3129683.png"},
-          {name: "Burger", price: 10, img: "https://cdn-icons-png.flaticon.com/512/1046/1046784.png"},
-          {name: "Flip Flops", price: 20, img: "https://cdn-icons-png.flaticon.com/512/2922/2922510.png"}
+          {name: "Soda", price: 5, img: "https://cdn-icons-png.flaticon.com/512/135/135763.png"}, // soda can
+          {name: "Burger", price: 10, img: "https://cdn-icons-png.flaticon.com/512/1046/1046784.png"}, // burger
+          {name: "Flip Flops", price: 20, img: "https://cdn-icons-png.flaticon.com/512/2933/2933042.png"} // flip flops
         ]
       },
       {
         name: "Electronics",
         items: [
-          {name: "Video Game", price: 60, img: "https://cdn-icons-png.flaticon.com/512/888/888879.png"},
-          {name: "TV", price: 800, img: "https://cdn-icons-png.flaticon.com/512/3011/3011202.png"},
-          {name: "Phone", price: 1200, img: "https://cdn-icons-png.flaticon.com/512/888/888859.png"},
-          {name: "Computer", price: 2000, img: "https://cdn-icons-png.flaticon.com/512/888/888853.png"}
+          {name: "Video Game", price: 60, img: "https://cdn-icons-png.flaticon.com/512/869/869869.png"}, // game controller
+          {name: "TV", price: 800, img: "https://cdn-icons-png.flaticon.com/512/2965/2965567.png"}, // TV
+          {name: "Phone", price: 1200, img: "https://cdn-icons-png.flaticon.com/512/888/888857.png"}, // phone
+          {name: "Computer", price: 2000, img: "https://cdn-icons-png.flaticon.com/512/1055/1055687.png"} // laptop
         ]
       },
       {
         name: "Luxury Items",
         items: [
-          {name: "Diamond Ring", price: 50000, img: "https://cdn-icons-png.flaticon.com/512/2838/2838909.png"},
-          {name: "Luxury Car", price: 250000, img: "https://cdn-icons-png.flaticon.com/512/743/743992.png"},
-          {name: "Mansion", price: 7500000, img: "https://cdn-icons-png.flaticon.com/512/616/616408.png"},
-          {name: "Yacht", price: 15000000, img: "https://cdn-icons-png.flaticon.com/512/3039/3039586.png"},
-          {name: "Private Jet", price: 50000000, img: "https://cdn-icons-png.flaticon.com/512/2962/2962145.png"},
-          {name: "Private Island", price: 100000000, img: "https://cdn-icons-png.flaticon.com/512/3039/3039539.png"}
+          {name: "Diamond Ring", price: 50000, img: "https://cdn-icons-png.flaticon.com/512/616/616408.png"}, // ring
+          {name: "Luxury Car", price: 250000, img: "https://cdn-icons-png.flaticon.com/512/743/743992.png"}, // car
+          {name: "Mansion", price: 7500000, img: "https://cdn-icons-png.flaticon.com/512/878/878265.png"}, // mansion
+          {name: "Yacht", price: 15000000, img: "https://cdn-icons-png.flaticon.com/512/2970/2970148.png"}, // yacht
+          {name: "Private Jet", price: 50000000, img: "https://cdn-icons-png.flaticon.com/512/747/747376.png"}, // jet
+          {name: "Private Island", price: 100000000, img: "https://cdn-icons-png.flaticon.com/512/2536/2536045.png"} // island
         ]
       },
       {
         name: "Military & Armies",
         items: [
-          {name: "Gun", price: 1000, img: "https://cdn-icons-png.flaticon.com/512/688/688304.png"},
-          {name: "Tank", price: 1000000, img: "https://cdn-icons-png.flaticon.com/512/1127/1127545.png"},
-          {name: "Army", price: 10000000000, img: "https://cdn-icons-png.flaticon.com/512/263/263083.png"}
+          {name: "Gun", price: 1000, img: "https://cdn-icons-png.flaticon.com/512/482/482731.png"}, // gun
+          {name: "Tank", price: 1000000, img: "https://cdn-icons-png.flaticon.com/512/2991/2991245.png"}, // tank
+          {name: "Army", price: 10000000000, img: "https://cdn-icons-png.flaticon.com/512/2175/2175303.png"} // soldiers
         ]
       },
       {
         name: "Countries & Sports Teams",
         items: [
           {name: "Country", price: 5000000000, img: "https://cdn-icons-png.flaticon.com/512/197/197484.png"},
-          {name: "Soccer Team", price: 500000000, img: "https://cdn-icons-png.flaticon.com/512/888/888844.png", maxOwned: 50},
-          {name: "NHL Team", price: 1000000000, img: "https://cdn-icons-png.flaticon.com/512/888/888843.png", maxOwned: 32},
-          {name: "MLB Team", price: 1500000000, img: "https://cdn-icons-png.flaticon.com/512/888/888842.png", maxOwned: 30},
-          {name: "NBA Team", price: 2000000000, img: "https://cdn-icons-png.flaticon.com/512/888/888841.png", maxOwned: 30},
-          {name: "NFL Team", price: 3000000000, img: "https://cdn-icons-png.flaticon.com/512/888/888840.png", maxOwned: 32}
+          {name: "Soccer Team", price: 500000000, img: "https://cdn-icons-png.flaticon.com/512/1041/1041051.png", maxOwned: 50},
+          {name: "NHL Team", price: 1000000000, img: "https://cdn-icons-png.flaticon.com/512/1995/1995627.png", maxOwned: 32},
+          {name: "MLB Team", price: 1500000000, img: "https://cdn-icons-png.flaticon.com/512/1995/1995611.png", maxOwned: 30},
+          {name: "NBA Team", price: 2000000000, img: "https://cdn-icons-png.flaticon.com/512/889/889880.png", maxOwned: 30},
+          {name: "NFL Team", price: 3000000000, img: "https://cdn-icons-png.flaticon.com/512/888/888883.png", maxOwned: 32}
         ]
       }
     ];
 
     const categoriesContainer = document.getElementById('categories-container');
 
-    // Create category sections sorted by item price
+    // Sort items in each category by price
     categories.forEach(category => {
       category.items.sort((a,b) => a.price - b.price);
 
