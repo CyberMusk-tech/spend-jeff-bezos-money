@@ -57,6 +57,9 @@
     .item button:hover {
       background: #0056b3;
     }
+    .item p {
+      margin-top: 5px;
+    }
   </style>
 </head>
 <body>
@@ -69,9 +72,9 @@
   <script>
     let money = 200000000000;
 
-    // List of items to buy
+    // Items with optional maxOwned
     const items = [
-      {name: "Burger", price: 10, img: "https://cdn-icons-png.flaticon.com/512/3081/3081559.png"},
+      {name: "Burger", price: 10, img: "https://cdn-icons-png.flaticon.com/512/3075/3075977.png"},
       {name: "Flip Flops", price: 20, img: "https://cdn-icons-png.flaticon.com/512/2922/2922510.png"},
       {name: "Soda", price: 5, img: "https://cdn-icons-png.flaticon.com/512/590/590685.png"},
       {name: "Tank", price: 1000000, img: "https://cdn-icons-png.flaticon.com/512/742/742818.png"},
@@ -83,8 +86,20 @@
       {name: "TV", price: 800, img: "https://cdn-icons-png.flaticon.com/512/3011/3011202.png"},
       {name: "Phone", price: 1200, img: "https://cdn-icons-png.flaticon.com/512/888/888859.png"},
       {name: "Computer", price: 2000, img: "https://cdn-icons-png.flaticon.com/512/888/888853.png"},
-      {name: "NFL Team", price: 3000000000, img: "https://cdn-icons-png.flaticon.com/512/888/888840.png"},
-      {name: "NBA Team", price: 2000000000, img: "https://cdn-icons-png.flaticon.com/512/888/888841.png"}
+
+      // Sports Teams with maxOwned
+      {name: "NFL Team", price: 3000000000, img: "https://cdn-icons-png.flaticon.com/512/888/888840.png", maxOwned: 32},
+      {name: "NBA Team", price: 2000000000, img: "https://cdn-icons-png.flaticon.com/512/888/888841.png", maxOwned: 30},
+      {name: "MLB Team", price: 1500000000, img: "https://cdn-icons-png.flaticon.com/512/888/888842.png", maxOwned: 30},
+      {name: "NHL Team", price: 1000000000, img: "https://cdn-icons-png.flaticon.com/512/888/888843.png", maxOwned: 32},
+      {name: "Soccer Team", price: 500000000, img: "https://cdn-icons-png.flaticon.com/512/888/888844.png", maxOwned: 50},
+
+      // More fun items
+      {name: "Luxury Car", price: 250000, img: "https://cdn-icons-png.flaticon.com/512/743/743992.png"},
+      {name: "Mansion", price: 7500000, img: "https://cdn-icons-png.flaticon.com/512/616/616408.png"},
+      {name: "Yacht", price: 15000000, img: "https://cdn-icons-png.flaticon.com/512/3039/3039586.png"},
+      {name: "Diamond Ring", price: 50000, img: "https://cdn-icons-png.flaticon.com/512/2838/2838909.png"},
+      {name: "Private Island", price: 100000000, img: "https://cdn-icons-png.flaticon.com/512/3039/3039539.png"}
     ];
 
     const container = document.getElementById('items-container');
@@ -104,11 +119,18 @@
 
     function buyItem(index) {
       const item = items[index];
+      const ownedEl = document.getElementById(`owned-${index}`);
+      let owned = parseInt(ownedEl.innerText);
+
+      if (item.maxOwned && owned >= item.maxOwned) {
+        alert(`You can only own ${item.maxOwned} ${item.name}${item.maxOwned>1?"s":""}!`);
+        return;
+      }
+
       if (money >= item.price) {
         money -= item.price;
         document.getElementById('money').innerText = '$' + money.toLocaleString();
-        const owned = document.getElementById(`owned-${index}`);
-        owned.innerText = parseInt(owned.innerText) + 1;
+        ownedEl.innerText = owned + 1;
       } else {
         alert("You're out of money!");
       }
@@ -116,3 +138,4 @@
   </script>
 </body>
 </html>
+
