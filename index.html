@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spend Jeff Bezos' Money</title>
+  <style>
+    body {
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #222;
+      color: #fff;
+      padding: 20px;
+      font-size: 1.8em;
+    }
+    h2 {
+      margin-top: 20px;
+      font-size: 1.5em;
+    }
+    .money {
+      font-size: 2em;
+      margin: 20px 0;
+      color: green;
+    }
+    .items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+    .item {
+      background: #fff;
+      width: 180px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      padding: 15px;
+    }
+    .item img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .item button {
+      margin-top: 10px;
+      padding: 10px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    .item button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <header>Spend Jeff Bezos' Money 💸</header>
+  <h2>Jeff Bezos' Net Worth:</h2>
+  <div class="money" id="money">$200,000,000,000</div>
+
+  <div class="items" id="items-container"></div>
+
+  <script>
+    let money = 200000000000;
+
+    // List of items to buy
+    const items = [
+      {name: "Burger", price: 10, img: "https://cdn-icons-png.flaticon.com/512/3081/3081559.png"},
+      {name: "Flip Flops", price: 20, img: "https://cdn-icons-png.flaticon.com/512/2922/2922510.png"},
+      {name: "Soda", price: 5, img: "https://cdn-icons-png.flaticon.com/512/590/590685.png"},
+      {name: "Tank", price: 1000000, img: "https://cdn-icons-png.flaticon.com/512/742/742818.png"},
+      {name: "Private Jet", price: 50000000, img: "https://cdn-icons-png.flaticon.com/512/2962/2962145.png"},
+      {name: "Country", price: 5000000000, img: "https://cdn-icons-png.flaticon.com/512/197/197484.png"},
+      {name: "Army", price: 10000000000, img: "https://cdn-icons-png.flaticon.com/512/263/263083.png"},
+      {name: "Gun", price: 1000, img: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"},
+      {name: "Video Game", price: 60, img: "https://cdn-icons-png.flaticon.com/512/888/888879.png"},
+      {name: "TV", price: 800, img: "https://cdn-icons-png.flaticon.com/512/3011/3011202.png"},
+      {name: "Phone", price: 1200, img: "https://cdn-icons-png.flaticon.com/512/888/888859.png"},
+      {name: "Computer", price: 2000, img: "https://cdn-icons-png.flaticon.com/512/888/888853.png"},
+      {name: "NFL Team", price: 3000000000, img: "https://cdn-icons-png.flaticon.com/512/888/888840.png"},
+      {name: "NBA Team", price: 2000000000, img: "https://cdn-icons-png.flaticon.com/512/888/888841.png"}
+    ];
+
+    const container = document.getElementById('items-container');
+
+    // Create item elements
+    items.forEach((item, index) => {
+      const div = document.createElement('div');
+      div.className = 'item';
+      div.innerHTML = `
+        <img src="${item.img}" alt="${item.name}" />
+        <h3>${item.name} - $${item.price.toLocaleString()}</h3>
+        <button onclick="buyItem(${index})">Buy</button>
+        <p>Owned: <span id="owned-${index}">0</span></p>
+      `;
+      container.appendChild(div);
+    });
+
+    function buyItem(index) {
+      const item = items[index];
+      if (money >= item.price) {
+        money -= item.price;
+        document.getElementById('money').innerText = '$' + money.toLocaleString();
+        const owned = document.getElementById(`owned-${index}`);
+        owned.innerText = parseInt(owned.innerText) + 1;
+      } else {
+        alert("You're out of money!");
+      }
+    }
+  </script>
+</body>
+</html>
